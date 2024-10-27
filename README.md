@@ -8,7 +8,7 @@ Um editor de texto rico personalizável construído com Vue.js. Permite que os u
 Você pode instalar o componente `RichTextEditor` diretamente do npm usando o seguinte comando:
 
 ```bash
-npm install rich-text-editor
+npm i rich-txt-edit-vue2
 ```
 
 ## Uso
@@ -30,7 +30,7 @@ Após a instalação, você pode importar e usar o componente `RichTextEditor` e
 </template>
 
 <script>
-import RichTextEditor from 'rich-text-editor';
+import RichTextEditor from 'rich-txt-edit-vue2';
 
 export default {
   components: {
