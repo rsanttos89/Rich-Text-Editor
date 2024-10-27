@@ -30,7 +30,7 @@ Após a instalação, você pode importar e usar o componente `RichTextEditor` e
 </template>
 
 <script>
-import RichTextEditor from 'rich-text-editor'; // ajuste o caminho se necessário
+import RichTextEditor from 'rich-text-editor';
 
 export default {
   components: {

@@ -94,10 +94,18 @@ export default {
   margin-bottom: 8px;
 }
 button {
-  padding: 4px 8px;
+  max-width: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  max-height: 30px;
   border: 1px solid #ccc;
   background-color: white;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   cursor: pointer;
+  font-size: 16px;
 }
 button.active {
   background-color: #007bff;
