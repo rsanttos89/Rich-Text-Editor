@@ -2,18 +2,21 @@
   <div :class="['rich-text-editor', editorContainer]">
     <div class="toolbar">
       <button
+        title="Negrito"
         :class="[buttonClass, { active: activeStyles.bold }]"
         @click="toggleStyle('bold')"
       >
         <b>B</b>
       </button>
       <button
+        title="Itálico"
         :class="[buttonClass, { active: activeStyles.italic }]"
         @click="toggleStyle('italic')"
       >
         <i>I</i>
       </button>
       <button
+        title="Sublinhado"
         :class="[buttonClass, { active: activeStyles.underline }]"
         @click="toggleStyle('underline')"
       >
@@ -37,7 +40,7 @@ export default {
   props: {
     content: {
       type: String,
-      default: "",
+      default: '',
     },
     editorContainer: {
       type: String,
@@ -66,6 +69,7 @@ export default {
     toggleStyle(style) {
       document.execCommand(style);
       this.updateActiveStyles();
+      this.$refs.editor.focus();
     },
     updateActiveStyles() {
       this.activeStyles.bold = document.queryCommandState("bold");
@@ -79,6 +83,7 @@ export default {
   },
   mounted() {
     this.$refs.editor.innerHTML = this.content;
+    this.$refs.editor.focus();
   },
 };
 </script>
@@ -106,15 +111,21 @@ button {
   display: flex;
   cursor: pointer;
   font-size: 16px;
+  user-select: none;
 }
 button.active {
-  background-color: #007bff;
   color: white;
+  background-color: #007bff;
   border-color: #007bff;
 }
 .editor {
-  min-height: 150px;
+  outline: none;
+  min-height: 200px;
+  max-height: 400px;
   border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
   padding: 8px;
+  overflow-y: auto;
 }
 </style>

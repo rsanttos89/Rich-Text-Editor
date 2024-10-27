@@ -74,7 +74,7 @@ O componente `RichTextEditor` aceita as seguintes props:
 
 ## Estilos
 
-O componente vem com estilos básicos, mas você pode personalizar a aparência passando suas próprias classes por meio das props `editorClass` e `buttonClass`.
+O componente vem com estilos básicos, mas você pode personalizar a aparência passando suas próprias classes por meio das props `editorContainer`, `editorClass` e `buttonClass`.
 
 ## Licença
 
@@ -83,3 +83,4 @@ Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](L
 ## Contribuindo
 
 Se você gostaria de contribuir para este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+```
