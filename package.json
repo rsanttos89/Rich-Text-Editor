@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "A rich text editor component for Vue.",
   "main": "src/index.js",
-  "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",
