@@ -1,6 +1,6 @@
 {
   "name": "rich-txt-edit-vue2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A rich text editor component for Vue.",
   "main": "src/index.js",
   "license": "MIT",
