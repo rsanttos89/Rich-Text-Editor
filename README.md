@@ -21,7 +21,7 @@ Após a instalação, você pode importar e usar o componente `RichTextEditor` e
 <template>
   <div>
     <RichTextEditor
-      v-model="editorContent"
+      v-model="content"
       buttonClass="minha-classe-personalizada-botao"
       editorContainer="minha-classe-container-editor"
       editorClass="minha-classe-editor"
@@ -35,11 +35,6 @@ import RichTextEditor from 'rich-txt-edit-vue2';
 export default {
   components: {
     RichTextEditor,
-  },
-  data() {
-    return {
-      editorContent: '<p>Comece a editar...</p>',
-    };
   },
 };
 </script>

@@ -126,13 +126,15 @@ export default {
 
 <style>
 .rich-text-editor-rs {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #ccc;
   padding: 8px;
+  gap: 8px;
 }
 .toolbar-rs {
   display: flex;
   gap: 8px;
-  margin-bottom: 8px;
 }
 .button-rs {
   max-width: 30px;
