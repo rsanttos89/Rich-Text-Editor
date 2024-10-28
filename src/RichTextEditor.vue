@@ -3,21 +3,21 @@
     <div class="toolbar">
       <button
         title="Negrito"
-        :class="[buttonClass, { active: activeStyles.bold }]"
+        :class="[buttonClass, { active: isBoldActive }]"
         @click="toggleStyle('bold')"
       >
         <b>B</b>
       </button>
       <button
         title="Itálico"
-        :class="[buttonClass, { active: activeStyles.italic }]"
+        :class="[buttonClass, { active:  isItalicActive }]"
         @click="toggleStyle('italic')"
       >
         <i>I</i>
       </button>
       <button
         title="Sublinhado"
-        :class="[buttonClass, { active: activeStyles.underline }]"
+        :class="[buttonClass, { active: isUnderlineActive }]"
         @click="toggleStyle('underline')"
       >
         <u>U</u>
@@ -63,18 +63,54 @@ export default {
         italic: false,
         underline: false,
       },
+      isBoldActive: false,
+      isItalicActive: false,
+      isUnderlineActive: false,
     };
   },
   methods: {
     toggleStyle(style) {
-      document.execCommand(style);
+      if (document.execCommand) {
+        document.execCommand(style);
+      }
+      // Atualiza apenas o estado do estilo clicado
+      if (style === 'bold') {
+        this.isBoldActive = !this.isBoldActive;
+      } else if (style === 'italic') {
+        this.isItalicActive = !this.isItalicActive;
+      } else if (style === 'underline') {
+        this.isUnderlineActive = !this.isUnderlineActive;
+      }
       this.updateActiveStyles();
       this.$refs.editor.focus();
     },
     updateActiveStyles() {
-      this.activeStyles.bold = document.queryCommandState("bold");
-      this.activeStyles.italic = document.queryCommandState("italic");
-      this.activeStyles.underline = document.queryCommandState("underline");
+      const selection = window.getSelection();
+
+      if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const parent = range.commonAncestorContainer;
+
+        // Verifica se o elemento pai tem os estilos aplicados
+        this.activeStyles.bold = this.hasStyle(parent, 'b') || this.hasStyle(parent, 'strong');
+        this.activeStyles.italic = this.hasStyle(parent, 'i') || this.hasStyle(parent, 'em');
+        this.activeStyles.underline = this.hasStyle(parent, 'u');
+      } else {
+        // Se não houver seleção, redefine os estilos como false
+        this.activeStyles.bold = false;
+        this.activeStyles.italic = false;
+        this.activeStyles.underline = false;
+      }
+    },
+    hasStyle(node, tag) {
+      // Verifica se o nó ou algum ancestral tem o estilo aplicado
+      while (node && node !== this.$refs.editor) {
+        if (node.nodeName.toLowerCase() === tag) {
+          return true;
+        }
+        node = node.parentNode;
+      }
+      return false;
     },
     updateContent() {
       this.currentContent = this.$refs.editor.innerHTML;
