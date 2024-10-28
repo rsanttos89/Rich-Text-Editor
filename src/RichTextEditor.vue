@@ -1,23 +1,23 @@
 <template>
-  <div :class="['rich-text-editor', editorContainer]">
-    <div class="toolbar">
+  <div :class="['rich-text-editor-rs', editorContainer]">
+    <div class="toolbar-rs">
       <button
         title="Negrito"
-        :class="[buttonClass, { active: isBoldActive }]"
+        :class="['button-rs', buttonClass, { activeRs: isBoldActive }]"
         @click="toggleStyle('bold')"
       >
         <b>B</b>
       </button>
       <button
         title="Itálico"
-        :class="[buttonClass, { active:  isItalicActive }]"
+        :class="['button-rs', buttonClass, { activeRs:  isItalicActive }]"
         @click="toggleStyle('italic')"
       >
         <i>I</i>
       </button>
       <button
         title="Sublinhado"
-        :class="[buttonClass, { active: isUnderlineActive }]"
+        :class="['button-rs', buttonClass, { activeRs: isUnderlineActive }]"
         @click="toggleStyle('underline')"
       >
         <u>U</u>
@@ -26,7 +26,7 @@
     <div
       ref="editor"
       contenteditable="true"
-      :class="['editor', editorClass]"
+      :class="['editor-rs', editorClass]"
       @input="updateContent"
       @focus="updateActiveStyles"
       @keyup="updateActiveStyles"
@@ -124,17 +124,17 @@ export default {
 };
 </script>
 
-<style scoped>
-.rich-text-editor {
+<style>
+.rich-text-editor-rs {
   border: 1px solid #ccc;
   padding: 8px;
 }
-.toolbar {
+.toolbar-rs {
   display: flex;
   gap: 8px;
   margin-bottom: 8px;
 }
-button {
+.button-rs {
   max-width: 30px;
   min-width: 30px;
   min-height: 30px;
@@ -149,12 +149,12 @@ button {
   font-size: 16px;
   user-select: none;
 }
-button.active {
+.button-rs.activeRs {
   color: white;
   background-color: #007bff;
   border-color: #007bff;
 }
-.editor {
+.editor-rs {
   outline: none;
   min-height: 200px;
   max-height: 400px;
